@@ -139,10 +139,9 @@ class RequestMethods:
                 headers=headers,
                 **urlopen_kw,
             )
-        else:
-            return self.request_encode_body(
-                method, url, fields=fields, headers=headers, **urlopen_kw
-            )
+        return self.request_encode_body(
+            method, url, fields=fields, headers=headers, **urlopen_kw
+        )
 
     def request_encode_url(
         self,
