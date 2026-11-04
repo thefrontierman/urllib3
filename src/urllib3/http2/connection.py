@@ -61,8 +61,8 @@ class _LockedObject(typing.Generic[T]):
     """
 
     __slots__ = (
-        "lock",
         "_obj",
+        "lock",
     )
 
     def __init__(self, obj: T):
