@@ -50,12 +50,13 @@ __license__ = "MIT"
 __version__ = __version__
 
 __all__ = (
+    "BaseHTTPResponse",
     "HTTPConnectionPool",
     "HTTPHeaderDict",
+    "HTTPResponse",
     "HTTPSConnectionPool",
     "PoolManager",
     "ProxyManager",
-    "HTTPResponse",
     "Retry",
     "Timeout",
     "add_stderr_logger",
@@ -65,7 +66,6 @@ __all__ = (
     "make_headers",
     "proxy_from_url",
     "request",
-    "BaseHTTPResponse",
 )
 
 logging.getLogger(__name__).addHandler(NullHandler())
