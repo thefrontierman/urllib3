@@ -191,7 +191,7 @@ class EmscriptenHttpResponseWrapper(BaseHTTPResponse):
 
     def release_conn(self) -> None:
         if not self._pool or not self._connection:
-            return None
+            return
 
         self._pool._put_conn(self._connection)
         self._connection = None
