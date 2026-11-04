@@ -392,7 +392,7 @@ class WrappedSocket:
         try:
             return self.connection.close()  # type: ignore[no-any-return]
         except OpenSSL.SSL.Error:
-            return
+            return None
 
     @typing.overload
     def getpeercert(
