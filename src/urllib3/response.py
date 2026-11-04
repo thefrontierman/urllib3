@@ -417,7 +417,7 @@ class BytesQueueBuffer:
     """
 
     def __init__(self) -> None:
-        self.buffer: typing.Deque[bytes | memoryview[bytes]] = collections.deque()
+        self.buffer: collections.deque[bytes | memoryview[bytes]] = collections.deque()
         self._size: int = 0
 
     def __len__(self) -> int:
