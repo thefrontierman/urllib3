@@ -593,8 +593,7 @@ def send_jspi_request(
         iter_value_js = header_iter.next()
         if getattr(iter_value_js, "done", False):
             break
-        else:
-            headers[str(iter_value_js.value[0])] = str(iter_value_js.value[1])
+        headers[str(iter_value_js.value[0])] = str(iter_value_js.value[1])
     status_code = response_js.status
     body: bytes | io.RawIOBase = b""
 
