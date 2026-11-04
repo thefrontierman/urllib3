@@ -293,8 +293,7 @@ class HTTP2Connection(HTTPSConnection):
         for k, v in headers.items():
             if k.lower() == "transfer-encoding" and v == "chunked":
                 continue
-            else:
-                self.putheader(k, v)
+            self.putheader(k, v)
 
         if b"user-agent" not in dict(self._headers):
             self.putheader(b"user-agent", _get_default_user_agent())
