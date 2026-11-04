@@ -232,13 +232,12 @@ if brotli is not None:
         def __init__(self) -> None:
             self._obj = brotli.Decompressor()
             if hasattr(self._obj, "decompress"):
-                setattr(self, "_decompress", self._obj.decompress)
+                self._decompress = self._obj.decompress
             else:
-                setattr(self, "_decompress", self._obj.process)
+                self._decompress = self._obj.process
 
         # Requires Brotli >= 1.2.0 for `output_buffer_limit`.
-        def _decompress(self, data: bytes, output_buffer_limit: int = -1) -> bytes:
-            raise NotImplementedError()
+        _decompress: typing.Callable[..., bytes]
 
         def decompress(self, data: bytes, max_length: int = -1) -> bytes:
             try:
