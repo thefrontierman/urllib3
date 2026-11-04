@@ -595,7 +595,7 @@ class ProxyManager(PoolManager):
         proxy_headers: typing.Mapping[str, str] | None = None,
         proxy_ssl_context: ssl.SSLContext | None = None,
         use_forwarding_for_https: bool = False,
-        proxy_assert_hostname: None | str | typing.Literal[False] = None,
+        proxy_assert_hostname: str | typing.Literal[False] | None = None,
         proxy_assert_fingerprint: str | None = None,
         **connection_pool_kw: typing.Any,
     ) -> None:
