@@ -135,16 +135,15 @@ class SOCKSConnection(HTTPConnection):
                         self,
                         f"Connection to {self.host} timed out. (connect timeout={self.timeout})",
                     ) from e
-                else:
-                    # Adding `from e` messes with coverage somehow, so it's omitted.
-                    # See #2386.
-                    raise NewConnectionError(
-                        self, f"Failed to establish a new connection: {error}"
-                    )
-            else:  # Defensive: see https://github.com/urllib3/urllib3/pull/3728#pullrequestreview-3816302703
+                # Adding `from e` messes with coverage somehow, so it's omitted.
+                # See #2386.
                 raise NewConnectionError(
-                    self, f"Failed to establish a new connection: {e}"
-                ) from e
+                    self, f"Failed to establish a new connection: {error}"
+                )
+            # Defensive: see https://github.com/urllib3/urllib3/pull/3728#pullrequestreview-3816302703
+            raise NewConnectionError(
+                self, f"Failed to establish a new connection: {e}"
+            ) from e
 
         except OSError as e:  # Defensive: PySocks should catch all these.
             raise NewConnectionError(
