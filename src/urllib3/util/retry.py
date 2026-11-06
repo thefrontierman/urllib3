@@ -545,7 +545,8 @@ class Retry:
                 cause = ResponseError.SPECIFIC_ERROR.format(status_code=response.status)
                 status = response.status
 
-        history = self.history + (
+        history = (
+            *self.history,
             RequestHistory(method, url, error, status, redirect_location),
         )
 
