@@ -823,7 +823,7 @@ class HTTPResponse(BaseHTTPResponse):
 
     def release_conn(self) -> None:
         if not self._pool or not self._connection:
-            return None
+            return
 
         self._pool._put_conn(self._connection)
         self._connection = None
@@ -1381,7 +1381,7 @@ class HTTPResponse(BaseHTTPResponse):
         # First, we'll figure out length of a chunk and then
         # we'll try to read it from socket.
         if self.chunk_left is not None:
-            return None
+            return
         line = self._fp.fp.readline(_MAX_CHUNK_LINE_LENGTH + 1)  # type: ignore[union-attr]
         if len(line) > _MAX_CHUNK_LINE_LENGTH:
             self.close()
