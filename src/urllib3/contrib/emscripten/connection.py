@@ -133,8 +133,7 @@ class EmscriptenHTTPConnection:
                 url=self._response.request.url,
                 connection=self,
             )
-        else:
-            raise ResponseNotReady()
+        raise ResponseNotReady()
 
     def close(self) -> None:
         self._closed = True
