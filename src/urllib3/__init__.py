@@ -37,6 +37,7 @@ else:
             f"the 'ssl' module is compiled with {ssl.OPENSSL_VERSION!r}. "
             "See: https://github.com/urllib3/urllib3/issues/3020",
             exceptions.NotOpenSSLWarning,
+            stacklevel=1,
         )
     elif ssl.OPENSSL_VERSION_INFO < (1, 1, 1):  # Defensive:
         raise ImportError(
