@@ -46,7 +46,12 @@ class RequestMethods:
         explicitly.
     """
 
-    _encode_url_methods = {"DELETE", "GET", "HEAD", "OPTIONS"}
+    _encode_url_methods: typing.ClassVar[set[str]] = {
+        "DELETE",
+        "GET",
+        "HEAD",
+        "OPTIONS",
+    }
 
     def __init__(self, headers: typing.Mapping[str, str] | None = None) -> None:
         self.headers = headers or {}
