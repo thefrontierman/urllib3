@@ -5,9 +5,9 @@ import threading
 
 class _HTTP2ProbeCache:
     __slots__ = (
-        "_lock",
         "_cache_locks",
         "_cache_values",
+        "_lock",
     )
 
     def __init__(self) -> None:
