@@ -517,7 +517,7 @@ class HTTPConnectionPool(ConnectionPool, RequestMethods):
             # EPROTOTYPE and ECONNRESET are needed on macOS
             # https://erickt.github.io/blog/2014/11/19/adventures-in-debugging-a-potential-osx-kernel-bug/
             # Condition changed later to emit ECONNRESET instead of only EPROTOTYPE.
-            if e.errno != errno.EPROTOTYPE and e.errno != errno.ECONNRESET:
+            if e.errno not in (errno.EPROTOTYPE, errno.ECONNRESET):
                 raise
 
         # Reset the timeout for the recv() on the socket
