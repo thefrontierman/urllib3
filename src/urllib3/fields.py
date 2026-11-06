@@ -292,12 +292,12 @@ class RequestField:
         """
         Renders the headers for this request field.
         """
-        lines = []
-
         sort_keys = ["Content-Disposition", "Content-Type", "Content-Location"]
-        for sort_key in sort_keys:
-            if self.headers.get(sort_key, False):
-                lines.append(f"{sort_key}: {self.headers[sort_key]}")
+        lines = [
+            f"{sort_key}: {self.headers[sort_key]}"
+            for sort_key in sort_keys
+            if self.headers.get(sort_key, False)
+        ]
 
         for header_name, header_value in self.headers.items():
             if header_name not in sort_keys:
