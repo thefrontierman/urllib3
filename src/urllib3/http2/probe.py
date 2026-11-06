@@ -70,7 +70,7 @@ class _HTTP2ProbeCache:
     def _values(self) -> dict[tuple[str, int], bool | None]:
         """This function is for testing purposes only. Gets the current state of the probe cache"""
         with self._lock:
-            return {k: v for k, v in self._cache_values.items()}
+            return dict(self._cache_values)
 
     def _reset(self) -> None:
         """This function is for testing purposes only. Reset the cache values"""
