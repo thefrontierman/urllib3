@@ -18,7 +18,7 @@ if typing.TYPE_CHECKING:
         def __getitem__(self, key: str) -> str: ...
 
 
-__all__ = ["RecentlyUsedContainer", "HTTPHeaderDict"]
+__all__ = ["HTTPHeaderDict", "RecentlyUsedContainer"]
 
 
 # Key type
