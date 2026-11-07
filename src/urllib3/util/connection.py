@@ -58,7 +58,7 @@ def create_connection(
         raise LocationParseError(f"'{host}', label empty or too long") from None
 
     for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
-        af, socktype, proto, canonname, sa = res
+        af, socktype, proto, sa = res[0], res[1], res[2], res[4]
         sock = None
         try:
             sock = socket.socket(af, socktype, proto)
