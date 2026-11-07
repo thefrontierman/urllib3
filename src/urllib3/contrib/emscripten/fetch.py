@@ -390,10 +390,11 @@ class _JSPIReadStream(io.RawIOBase):
             return True
 
     def readinto(self, byte_obj: Buffer) -> int:
-        if self.current_buffer is None:
-            if not self._get_next_buffer() or self.current_buffer is None:
-                self.close()
-                return 0
+        if self.current_buffer is None and (
+            not self._get_next_buffer() or self.current_buffer is None
+        ):
+            self.close()
+            return 0
         ret_length = min(
             len(byte_obj), len(self.current_buffer) - self.current_buffer_pos
         )
